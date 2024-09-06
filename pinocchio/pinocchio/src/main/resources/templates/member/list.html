@@ -19,7 +19,7 @@
   <div class="navbar navbar-dark bg-dark shadow-sm">
     <div class="container">
       <a href="/pinocchio" class="navbar-brand d-flex align-items-center">
-        <strong>BEAT GAME</strong>
+        <strong>MEMBER LIST</strong>
       </a>
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
         <a href="/pinocchio" class="nav-link text-white" aria-current="page">
@@ -36,21 +36,33 @@
   <div class="container">
     <table class="table" style="text-align: center; border: 1px soild #dddddd">
       <thead>
-      <tr style="height: 50px">
-        <th style="background-color: #fafafa; text-align: center; font-size: 40px">🎼 Beat Game 🎼</th>
-      </tr>
+        <tr style="height: 50px">
+          <th style="background-color: #fafafa; text-align: center;">아이디</th>
+          <th style="background-color: #fafafa; text-align: center;">이메일</th>
+          <th style="background-color: #fafafa; text-align: center;">비밀번호</th>
+          <th style="background-color: #fafafa; text-align: center;">이름</th>
+          <th style="background-color: #fafafa; text-align: center;">상세조회</th>
+          <th style="background-color: #fafafa; text-align: center;">삭제</th>
+        </tr>
       </thead>
       <tbody>
-      <tr>
-        <td><img src="img/beatgame.png" alt="" width="1000px"></td>
-      </tr>
-      <tr style="height: 50px">
-        <th style="text-align: center;"><input type="submit" id="beatgameBtn" width="100px" value="Download"></th>
-      </tr>
+        <tr style="height: 50px" th:each="member: ${memberList}">
+          <td th:text="${member.id}"></td>
+          <td th:text="${member.memberEmail}"></td>
+          <td th:text="${member.memberPassword}"></td>
+          <td th:text="${member.memberName}"></td>
+          <td>
+            <!-- query String /member?id=1
+                rest api /member/1 -->
+            <a th:href="@{|/pinocchio/${member.id}|}"><input type="button" style="width: 100px" value="조회"></a>
+          </td>
+          <td>
+            <a th:href="@{|/pinocchio/delete/${member.id}|}"><input type="button" style="width: 100px" value="삭제"></a>
+          </td>
+        </tr>
       </tbody>
     </table>
   </div>
-  </form>
 </main>
 
 <footer class="text-body-secondary py-5">

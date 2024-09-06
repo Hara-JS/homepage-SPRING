@@ -8,7 +8,7 @@
 
   <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/sidebars/">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
-  <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/dist/css/bootstrap.min.css">
 
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -19,7 +19,7 @@
   <div class="navbar navbar-dark bg-dark shadow-sm">
     <div class="container">
       <a href="/pinocchio" class="navbar-brand d-flex align-items-center">
-        <strong>BEAT GAME</strong>
+        <strong>SIGN IN</strong>
       </a>
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
         <a href="/pinocchio" class="nav-link text-white" aria-current="page">
@@ -33,23 +33,30 @@
 </header>
 
 <main>
-  <div class="container">
-    <table class="table" style="text-align: center; border: 1px soild #dddddd">
-      <thead>
-      <tr style="height: 50px">
-        <th style="background-color: #fafafa; text-align: center; font-size: 40px">🎼 Beat Game 🎼</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td><img src="img/beatgame.png" alt="" width="1000px"></td>
-      </tr>
-      <tr style="height: 50px">
-        <th style="text-align: center;"><input type="submit" id="beatgameBtn" width="100px" value="Download"></th>
-      </tr>
-      </tbody>
-    </table>
-  </div>
+  <!-- action 속성 : form에 작성한 데이터를 어디로 보낼지 지정 -->
+  <form action="/pinocchio/signin" method="post">
+    <div class="container">
+      <table class="table" style="text-align: center; border: 1px soild #dddddd">
+        <thead>
+          <tr style="height: 50px">
+            <th style="background-color: #fafafa; text-align: center;">이메일</th>
+            <th style="background-color: #fafafa; text-align: center;">비밀번호</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="height: 50px">
+            <td><input type="email" name="memberEmail" id="memberEmail" onblur="emailCheck()"></td>
+            <td><input type="password" name="memberPassword" id="memberPassword"></td>
+          </tr>
+          <tr style="height: 50px">
+            <th colspan="2" style="background-color: #fafafa; text-align: center;"><input type="submit" style="width: 100px" value="로그인"></th>
+          </tr>
+          <tr style="height: 50px">
+            <td colspan="2" style="text-align: center;"><a href="javascript:save()"><input type="button" style="width:100px" value="회원가입"></a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </form>
 </main>
 

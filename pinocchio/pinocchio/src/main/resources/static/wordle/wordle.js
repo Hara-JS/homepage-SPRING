@@ -21,6 +21,19 @@ const answerList = ["apple", "angel", "album", "ocean", "bacon", "basic", "bagle
 
 const answer = answerList[Math.floor(Math.random() * answerList.length)].toUpperCase();
 
+const makeDocumentKeydownEvent = () => {
+  document.body.addEventListener("keydown", (event) => {
+       stringToAscii(event.key);
+    });
+}
+
+const clearWordleObj = () => {
+    nowRowIndex.x = 0;
+    nowCursorIndex.x = -1;
+    nowCursorIndex.y = 0;
+}
+
+
 const makeEvent = () => {
   document.getElementById("showRuleBtn").addEventListener("mouseover", (event) => {
       document.getElementById("wordle_rule").style.display = "block";
@@ -28,9 +41,7 @@ const makeEvent = () => {
     document.getElementById("showRuleBtn").addEventListener("mouseout", (event) => {
       document.getElementById("wordle_rule").style.display = "none";
     });
-  document.body.addEventListener("keydown", (event) => {
-    stringToAscii(event.key);
-    });
+
   const keyboardBtn = document.getElementsByClassName("keyboardBtn");
   for(let i = 0; i < keyboardBtn.length; i++) {
     keyboardBtn[i].addEventListener("click", (event) => {
@@ -65,7 +76,9 @@ const stringToAscii = (str) => {
     } else if(nowRowIndex.x < 7) {
       makeTemplate();
     } else if(nowRowIndex.x === 7 && answerFlag === false) {
-      alert("아쉽네요. 정답은 '" + answer + "' 입니다.");
+      setTimeout(function() {
+        alert("아쉽네요. 정답은 '" + answer + "' 입니다.");
+      }, 200);
     }
   } else if (str === "Backspace" && nowCursorIndex.y !== 0) {
     const removeTarget = document.getElementById("inputBtn_" + nowCursorIndex.x + "_" + (nowCursorIndex.y - 1));
