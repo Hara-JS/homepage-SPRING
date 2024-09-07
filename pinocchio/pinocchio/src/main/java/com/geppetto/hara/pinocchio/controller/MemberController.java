@@ -112,7 +112,7 @@ public class MemberController {
   @GetMapping("/pinocchio/signout")
   public String signout(HttpSession session) {
     session.invalidate();
-    return "index";
+    return "redirect:/pinocchio";
   }
 
   @PostMapping("/pinocchio/email-check")
